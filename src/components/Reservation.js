@@ -1,3 +1,4 @@
+import { useSelector } from "react-redux";
 import styled from "styled-components";
 import ReservationItem from "./ReservationItem";
 const ReservationContainer = styled.div`
@@ -11,29 +12,25 @@ const ReservationListHeader = styled.h4`
   color: gray;
 `;
 
-function Reservation() {
+const Reservation = () => {
+  const reservations = useSelector((state) => state.reservations.value);
   return (
     <ReservationContainer>
       <ReservationListHeader>Reservation List :</ReservationListHeader>
       <ReservationList>
-        <ReservationItem
-          username={"bilal saidi"}
-          numberDates={"2"}
-          startDate={"3 / 7 / 2022"}
-        ></ReservationItem>
-        <ReservationItem
-          username={"obida saidi"}
-          numberDates={"2"}
-          startDate={"3 / 7 / 2022"}
-        ></ReservationItem>
-        <ReservationItem
-          username={"rahma saidi"}
-          numberDates={"2"}
-          startDate={"3 / 7 / 2022"}
-        ></ReservationItem>
+        {reservations.map((item) => {
+          return (
+            <ReservationItem
+              key={item.id}
+              username={item.username}
+              numberDates={item.numberDates}
+              startDate={item.startDate}
+            ></ReservationItem>
+          );
+        })}
       </ReservationList>
     </ReservationContainer>
   );
-}
+};
 
 export default Reservation;

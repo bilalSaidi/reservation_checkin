@@ -31,7 +31,7 @@ background-color: #60a1f4;
 border-color: #60a1f4;
 
 `;
-function ReservationItem({ username, numberDates, startDate }) {
+const ReservationItem = ({ username, numberDates, startDate }) => {
   return (
     <Item>
       <UserName>UserName : {username}</UserName>
@@ -40,6 +40,6 @@ function ReservationItem({ username, numberDates, startDate }) {
       <CheckInButtom>Check In</CheckInButtom>
     </Item>
   );
-}
+};
 
 export default ReservationItem;
