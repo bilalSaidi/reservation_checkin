@@ -1,5 +1,6 @@
 import styled from "styled-components";
-
+import { useDispatch } from "react-redux";
+import { removeReservation } from "../app/features/reservationSlice";
 const Item = styled.li`
   background-color: white;
   color: black;
@@ -31,13 +32,18 @@ background-color: #60a1f4;
 border-color: #60a1f4;
 
 `;
-const ReservationItem = ({ username, numberDates, startDate }) => {
+const ReservationItem = ({ id, username, numberDates, startDate }) => {
+  const dispatch = useDispatch();
+  const handleClick = () => {
+    dispatch(removeReservation(id));
+  };
   return (
     <Item>
       <UserName>UserName : {username}</UserName>
       <NumberDates>Number Of Days : {numberDates}</NumberDates>
       <StartDates> Start Date :{startDate}</StartDates>
       <CheckInButtom>Check In</CheckInButtom>
+      <CheckInButtom onClick={() => handleClick()}>delete</CheckInButtom>
     </Item>
   );
 };

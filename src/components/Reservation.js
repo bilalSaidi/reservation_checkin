@@ -22,6 +22,7 @@ const Reservation = () => {
           return (
             <ReservationItem
               key={item.id}
+              id={item.id}
               username={item.username}
               numberDates={item.numberDates}
               startDate={item.startDate}

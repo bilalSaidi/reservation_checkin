@@ -1,8 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
 const initialState = {
-  value: [
-    { id: 0, username: "bilal saidi", numberDates: 3, startDate: "2/7/2022" },
-  ],
+  value: [],
 };
 
 export const reservationSlice = createSlice({
@@ -12,7 +10,10 @@ export const reservationSlice = createSlice({
     addReservation: (state, action) => {
       state.value.push(action.payload);
     },
+    removeReservation: (state, action) => {
+      state.value = state.value.filter((item) => item.id !== action.payload);
+    },
   },
 });
-export const { addReservation } = reservationSlice.actions;
+export const { addReservation, removeReservation } = reservationSlice.actions;
 export default reservationSlice.reducer;

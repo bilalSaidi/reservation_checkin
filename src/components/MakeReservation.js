@@ -1,7 +1,8 @@
 import { useState } from "react";
-import { dispatch, useDispatch } from "react-redux";
+import { useDispatch } from "react-redux";
 import styled from "styled-components";
 import { addReservation } from "../app/features/reservationSlice";
+import { v4 as uuidv4 } from "uuid";
 const ReservationInputs = styled.div`
   border-right: 1px solid gray;
   flex: 1;
@@ -46,6 +47,7 @@ const MakeReservation = () => {
 
     dispatch(
       addReservation({
+        id: uuidv4(),
         username: username,
         numberDates: numberdates,
         startDate: startdate,
